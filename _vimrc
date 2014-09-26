@@ -39,7 +39,9 @@ NeoBundle 'vim-scripts/AnsiEsc.vim'
 NeoBundle 'bronson/vim-trailing-whitespace'
 " less用のsyntaxハイライト
 NeoBundle 'KohPoll/vim-less'
-" 余談: neocompleteは合わなかった。ctrl+pで補完するのが便利
+" automated complete
+NeoBundle 'Shougo/neocomplete.vim'
+
 call neobundle#end()
 " Required:
 filetype plugin indent on
