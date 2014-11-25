@@ -114,6 +114,9 @@ syntax on
 colorscheme desert
 " 行番号の色
 highlight LineNr ctermfg=darkyellow
+" BackSpace function
+set backspace=start,eol,indent
+
 """"""""""""""""""""""""""""""
 " vimを立ち上げたときに、自動的にvim-indent-guidesをオンにする
 let g:indent_guides_enable_on_vim_startup = 1
