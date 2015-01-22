@@ -42,6 +42,16 @@ NeoBundle 'KohPoll/vim-less'
 " automated complete
 NeoBundle 'Shougo/neocomplete.vim'
 
+NeoBundleLazy 'marcus/rsense', {
+      \ 'autoload': {
+      \   'filetypes': 'ruby',
+      \ },
+      \ }
+
+NeoBundle 'supermomonga/neocomplete-rsense.vim', {
+      \ 'depends': ['Shougo/neocomplete.vim', 'marcus/rsense'],
+      \ }
+
 call neobundle#end()
 " Required:
 filetype plugin indent on
@@ -211,13 +221,17 @@ imap { {}<LEFT>
 imap [ []<LEFT>
 imap ( ()<LEFT>
 """"""""""""""""""""""""""""""
+let g:rsenseUseOmniFunc = 1
+
 "neocompleteの設定
-
-let g:neocomplete#enable_at_startup = 1
-if !exists('g:neocomplete#force_omni_input_patterns')
-  let g:neocomplete#force_omni_input_patterns = {}
-endif
-let g:neocomplete#force_omni_input_patterns.ruby = '[^. *\t]\.\w*\|\h\w*::'
-
+    let g:neocomplete#enable_at_startup = 1
+    let g:neocomplete#enable_ignore_case = 1
+    let g:neocomplete#enable_smart_case = 1
+    if !exists('g:neocomplete#keyword_patterns')
+        let g:neocomplete#keyword_patterns = {}
+    endif
+    let g:neocomplete#keyword_patterns._ = '\h\w*'
+inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<S-TAB>"
 " filetypeの自動検出(最後の方に書いた方がいいらしい)
 filetype on
